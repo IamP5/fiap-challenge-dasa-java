@@ -1,0 +1,22 @@
+meta {
+  name: Create Report
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}{{apiPath}}/laudos/amostra/AMT2024010
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "patologistaId": 1,
+    "diagnosticoPrincipal": "Carcinoma basocelular",
+    "diagnosticosSecundarios": "Presença de infiltrado inflamatório crônico",
+    "conclusao": "Lesão compatível com carcinoma basocelular de padrão nodular",
+    "recomendacoes": "Recomenda-se excisão cirúrgica completa com margem de segurança",
+    "codigoCid": "C44.9"
+  }
+}

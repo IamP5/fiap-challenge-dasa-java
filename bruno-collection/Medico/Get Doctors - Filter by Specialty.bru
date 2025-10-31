@@ -1,0 +1,15 @@
+meta {
+  name: Get Doctors - Filter by Specialty
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/medicos?especialidade=Cardiologia
+  body: none
+  auth: none
+}
+
+params:query {
+  especialidade: Cardiologia
+}

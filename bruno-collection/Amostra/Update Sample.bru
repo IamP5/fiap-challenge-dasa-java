@@ -1,0 +1,24 @@
+meta {
+  name: Update Sample
+  type: http
+  seq: 13
+}
+
+put {
+  url: {{baseUrl}}{{apiPath}}/amostras/AMT2024001
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "codigoRastreio": "AMO-2024-001",
+    "pacienteId": 1,
+    "medicoSolicitanteId": 2,
+    "tipoTecido": "Pele",
+    "localizacaoAnatomica": "Braço esquerdo superior",
+    "dataColeta": "2024-01-15",
+    "dataRecebimento": "2024-01-16",
+    "observacoes": "Lesão suspeita - atualizado"
+  }
+}

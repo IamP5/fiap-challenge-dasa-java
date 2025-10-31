@@ -1,0 +1,23 @@
+meta {
+  name: Create Measurement
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}{{apiPath}}/medicoes/amostra/AMO-2024-001
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "larguraMm": 12.50,
+    "alturaMm": 8.30,
+    "profundidadeMm": 3.20,
+    "metodoMedicao": "Manual com paquímetro digital",
+    "equipamentoUtilizado": "Paquímetro Digital Mitutoyo",
+    "responsavelMedicao": "Técnico João Silva",
+    "observacoes": "Medição realizada em temperatura ambiente"
+  }
+}

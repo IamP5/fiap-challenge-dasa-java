@@ -1,0 +1,15 @@
+meta {
+  name: Count Samples by Status
+  type: http
+  seq: 11
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras/stats/count?status=RECEBIDA
+  body: none
+  auth: none
+}
+
+query {
+  status: RECEBIDA
+}

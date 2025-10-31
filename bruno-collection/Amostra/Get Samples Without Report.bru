@@ -1,0 +1,15 @@
+meta {
+  name: Get Samples Without Report
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?semLaudo=true
+  body: none
+  auth: none
+}
+
+query {
+  semLaudo: true
+}

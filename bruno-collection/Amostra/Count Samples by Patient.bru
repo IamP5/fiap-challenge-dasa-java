@@ -1,0 +1,23 @@
+meta {
+  name: Count Samples by Patient
+  type: http
+  seq: 18
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras/stats/count?pacienteId=2
+  body: none
+  auth: none
+}
+
+query {
+  pacienteId: 2
+}
+
+docs {
+  # Count Samples by Patient
+
+  Returns the count of samples for a specific patient.
+
+  Filter: pacienteId=2
+}

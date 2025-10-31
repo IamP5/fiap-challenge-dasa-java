@@ -1,0 +1,22 @@
+meta {
+  name: Get Patient by CPF
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/pacientes/cpf/12345678901
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status should be 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("Should return patient with matching CPF", function() {
+    expect(res.getBody()).to.have.property('cpf');
+    expect(res.getBody().cpf).to.equal('12345678901');
+  });
+}

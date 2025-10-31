@@ -1,0 +1,30 @@
+meta {
+  name: Create Sample
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}{{apiPath}}/amostras
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "codigoRastreio": "AMT2024010",
+    "pacienteId": 1,
+    "medicoSolicitanteId": 2,
+    "tipoTecido": "Pele",
+    "localizacaoAnatomica": "Braço esquerdo",
+    "dataColeta": "2024-01-15",
+    "dataRecebimento": "2024-01-16",
+    "observacoes": "Lesão suspeita"
+  }
+}
+
+tests {
+  test("Status should be 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}

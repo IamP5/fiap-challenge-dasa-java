@@ -1,0 +1,15 @@
+meta {
+  name: Get Doctors - Filter Active
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/medicos?ativo=true
+  body: none
+  auth: none
+}
+
+params:query {
+  ativo: true
+}

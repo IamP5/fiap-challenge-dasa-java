@@ -1,0 +1,22 @@
+meta {
+  name: Get Doctor by CRM
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/medicos/crm/123456/uf/SP
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status should be 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("Should return doctor with matching CRM", function() {
+    expect(res.getBody()).to.have.property('crm');
+    expect(res.getBody().crm).to.equal('123456');
+  });
+}

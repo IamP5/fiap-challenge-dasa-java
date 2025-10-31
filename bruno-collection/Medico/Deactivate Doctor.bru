@@ -1,0 +1,11 @@
+meta {
+  name: Deactivate Doctor
+  type: http
+  seq: 12
+}
+
+patch {
+  url: {{baseUrl}}{{apiPath}}/medicos/1/desativar
+  body: none
+  auth: none
+}

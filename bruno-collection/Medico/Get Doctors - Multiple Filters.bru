@@ -1,0 +1,17 @@
+meta {
+  name: Get Doctors - Multiple Filters
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/medicos?tipo=PATOLOGISTA&ativo=true&especialidade=Patologia
+  body: none
+  auth: none
+}
+
+params:query {
+  tipo: PATOLOGISTA
+  ativo: true
+  especialidade: Patologia
+}

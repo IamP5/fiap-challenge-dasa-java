@@ -1,0 +1,15 @@
+meta {
+  name: Get Samples Ready for Analysis
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?prontaParaAnalise=true
+  body: none
+  auth: none
+}
+
+query {
+  prontaParaAnalise: true
+}

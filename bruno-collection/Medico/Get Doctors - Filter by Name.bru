@@ -1,0 +1,15 @@
+meta {
+  name: Get Doctors - Filter by Name
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/medicos?nome=Silva
+  body: none
+  auth: none
+}
+
+params:query {
+  nome: Silva
+}

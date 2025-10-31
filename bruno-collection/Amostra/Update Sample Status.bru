@@ -1,0 +1,17 @@
+meta {
+  name: Update Sample Status
+  type: http
+  seq: 12
+}
+
+patch {
+  url: {{baseUrl}}{{apiPath}}/amostras/AMT2024010/status
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "status": "EM_PROCESSAMENTO"
+  }
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Create Patient
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}{{apiPath}}/pacientes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nomeCompleto": "Maria Silva Santos",
+    "dataNascimento": "1985-03-15",
+    "sexo": "FEMININO",
+    "cpf": "12345678901",
+    "telefone": "(11)99999-1111",
+    "email": "maria@email.com",
+    "enderecoCompleto": "Rua das Flores, 123"
+  }
+}
+
+tests {
+  test("Status should be 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+  test("Should return patient ID", function() {
+    expect(res.getBody()).to.have.property('pacienteId');
+  });
+}

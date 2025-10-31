@@ -1,0 +1,15 @@
+meta {
+  name: Count Patients by Gender
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/pacientes/stats/count?sexo=FEMININO
+  body: none
+  auth: none
+}
+
+params:query {
+  sexo: FEMININO
+}

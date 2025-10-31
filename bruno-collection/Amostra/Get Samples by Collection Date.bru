@@ -1,0 +1,16 @@
+meta {
+  name: Get Samples by Collection Date
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?dataColetaInicio=2024-01-01&dataColetaFim=2024-12-31
+  body: none
+  auth: none
+}
+
+query {
+  dataColetaInicio: 2024-01-01
+  dataColetaFim: 2024-12-31
+}

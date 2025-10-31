@@ -1,0 +1,15 @@
+meta {
+  name: Get Samples by Status
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?status=RECEBIDA
+  body: none
+  auth: none
+}
+
+query {
+  status: RECEBIDA
+}

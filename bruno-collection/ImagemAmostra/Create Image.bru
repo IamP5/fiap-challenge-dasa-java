@@ -1,0 +1,24 @@
+meta {
+  name: Create Image
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}{{apiPath}}/imagens/amostra/AMT2024010
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nomeArquivo": "amostra_001_frontal.jpg",
+    "caminhoArquivo": "/storage/images/2024/01/amostra_001_frontal.jpg",
+    "urlAcesso": "https://storage.example.com/images/amostra_001.jpg",
+    "tipoArquivo": "JPG",
+    "tamanhoBytes": 2048000,
+    "descricao": "Imagem frontal da amostra",
+    "equipamentoCaptura": "Microscópio Olympus BX53",
+    "resolucao": "1920x1080"
+  }
+}

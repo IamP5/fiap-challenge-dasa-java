@@ -1,0 +1,23 @@
+meta {
+  name: Count Samples by Doctor
+  type: http
+  seq: 19
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras/stats/count?medicoId=2
+  body: none
+  auth: none
+}
+
+query {
+  medicoId: 2
+}
+
+docs {
+  # Count Samples by Doctor
+
+  Returns the count of samples for a specific doctor.
+
+  Filter: medicoId=2
+}

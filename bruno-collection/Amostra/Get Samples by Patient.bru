@@ -1,0 +1,15 @@
+meta {
+  name: Get Samples by Patient
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?pacienteId=2
+  body: none
+  auth: none
+}
+
+query {
+  pacienteId: 2
+}

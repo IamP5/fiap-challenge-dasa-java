@@ -1,0 +1,15 @@
+meta {
+  name: Get Samples by Doctor
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?medicoId=2
+  body: none
+  auth: none
+}
+
+query {
+  medicoId: 2
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Get Doctors - Filter by Type
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/medicos?tipo=PATOLOGISTA
+  body: none
+  auth: none
+}
+
+params:query {
+  tipo: PATOLOGISTA
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Get Samples - Complex Filter
+  type: http
+  seq: 16
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?medicoId=2&tipoTecido=sangue&dataColetaInicio=2024-01-01&dataColetaFim=2024-12-31&prontaParaAnalise=true
+  body: none
+  auth: none
+}
+
+query {
+  medicoId: 2
+  tipoTecido: sangue
+  dataColetaInicio: 2024-01-01
+  dataColetaFim: 2024-12-31
+  prontaParaAnalise: true
+}
+
+docs {
+  # Complex Filter Example
+
+  This example shows a complex query combining multiple criteria:
+
+  - medicoId=2: Samples from doctor with ID 2
+  - tipoTecido=sangue: Tissue type contains "sangue" (case-insensitive)
+  - dataColetaInicio=2024-01-01: Collected on or after January 1, 2024
+  - dataColetaFim=2024-12-31: Collected on or before December 31, 2024
+  - prontaParaAnalise=true: Only samples ready for analysis (has measurements and images)
+
+  This query efficiently filters at the database level using JPA Specifications.
+}

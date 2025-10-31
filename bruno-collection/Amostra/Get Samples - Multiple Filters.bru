@@ -1,0 +1,39 @@
+meta {
+  name: Get Samples - Multiple Filters
+  type: http
+  seq: 15
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras?pacienteId=2&status=ANALISADA&semLaudo=true
+  body: none
+  auth: none
+}
+
+query {
+  pacienteId: 2
+  status: ANALISADA
+  semLaudo: true
+}
+
+docs {
+  # Get Samples with Multiple Filters
+  
+  This example demonstrates combining multiple filters in a single request.
+  
+  Filters applied:
+  - pacienteId=2: Only samples from patient with ID 2
+  - status=ANALISADA: Only analyzed samples
+  - semLaudo=true: Only samples without a report
+  
+  All filters are combined with AND logic.
+  
+  Valid status values:
+  - RECEBIDA
+  - EM_PROCESSAMENTO
+  - MEDIDA
+  - ANALISADA
+  - LAUDADA
+  - LIBERADA
+  - CANCELADA
+}

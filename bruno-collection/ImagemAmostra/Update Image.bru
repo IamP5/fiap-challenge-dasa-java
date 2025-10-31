@@ -1,0 +1,24 @@
+meta {
+  name: Update Image
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}{{apiPath}}/imagens/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nomeArquivo": "amostra_001_frontal_v2.jpg",
+    "caminhoArquivo": "/storage/images/2024/01/amostra_001_frontal_v2.jpg",
+    "urlAcesso": "https://storage.example.com/images/amostra_001_v2.jpg",
+    "tipoArquivo": "JPG",
+    "tamanhoBytes": 2560000,
+    "descricao": "Imagem frontal atualizada",
+    "equipamentoCaptura": "Microscópio Olympus BX53",
+    "resolucao": "2560x1440"
+  }
+}

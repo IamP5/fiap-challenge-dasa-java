@@ -1,0 +1,23 @@
+meta {
+  name: Update Doctor
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseUrl}}{{apiPath}}/medicos/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nomeCompleto": "Dr. Carlos Silva",
+    "crm": "123455",
+    "ufCrm": "SP",
+    "especialidade": "Histopatologia",
+    "tipoMedico": "PATOLOGISTA",
+    "telefone": "(11)98765-4321",
+    "email": "carlos.updated@hospital.com"
+  }
+}

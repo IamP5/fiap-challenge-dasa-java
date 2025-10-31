@@ -1,0 +1,22 @@
+meta {
+  name: Update Report
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{baseUrl}}{{apiPath}}/laudos/5
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "patologistaId": 1,
+    "diagnosticoPrincipal": "Carcinoma basocelular de padrão nodular",
+    "diagnosticosSecundarios": "Presença de infiltrado inflamatório crônico moderado",
+    "conclusao": "Lesão compatível com carcinoma basocelular. Margens livres.",
+    "recomendacoes": "Seguimento dermatológico semestral. Fotoproteção.",
+    "codigoCid": "C44.9"
+  }
+}

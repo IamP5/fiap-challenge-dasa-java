@@ -1,0 +1,15 @@
+meta {
+  name: Count Doctors by Type
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/medicos/stats/count?tipo=PATOLOGISTA
+  body: none
+  auth: none
+}
+
+query {
+  tipo: PATOLOGISTA
+}

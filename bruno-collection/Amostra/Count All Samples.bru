@@ -1,0 +1,19 @@
+meta {
+  name: Count All Samples
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseUrl}}{{apiPath}}/amostras/stats/count
+  body: none
+  auth: none
+}
+
+docs {
+  # Count All Samples
+
+  Returns the total count of all samples in the database.
+
+  No filters applied - returns total count.
+}
