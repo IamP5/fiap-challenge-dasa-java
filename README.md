@@ -1,10 +1,17 @@
 # Sistema de Análise Patológica - Spring Boot Application
 
-Este é um sistema Spring Boot para gestão de amostras patológicas, convertido da aplicação CLI Java original.
+Este é um sistema Spring Boot para gestão de amostras patológicas.
 
-## ✅ O que foi implementado
+## Integrantes
 
-### 1. Estrutura do Projeto
+| Nome                                 | RM     |
+|--------------------------------------|--------|
+| Bruno Gabriel Silva Dominicheli      | 554981 |
+| Larissa Rodrigues Lapa               | 554517 |
+| Nicolly Ramalho Bleinat              | 555359 |
+| Paulo Henrique Monteiro Golovanevsky | 555300 |
+
+## Estrutura do Projeto
 
 ```
 analisepatologica/
@@ -24,15 +31,15 @@ analisepatologica/
     └── application-dev.yml            # Oracle Profile
 ```
 
-### 2. Configuração de Perfis
+## Configuração de Perfis
 
-#### Profile `local` (H2 Database)
+### Profile `local` (H2 Database)
 - Banco em memória H2
 - Console H2 disponível em: http://localhost:8080/h2-console
 - DDL auto-create-drop
 - Ideal para desenvolvimento e testes
 
-#### Profile `dev` (Oracle Database)
+### Profile `dev` (Oracle Database)
 - Conexão com Oracle Database FIAP
 - Host: oracle.fiap.com.br:1521
 - SID: ORCL
@@ -47,187 +54,6 @@ mvn spring-boot:run
 # Dev (Oracle)
 mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=dev
 ```
-
-### 3. Entidades Implementadas
-
-Todas as entidades foram criadas com:
-- ✅ Anotações JPA completas
-- ✅ Validações Jakarta Bean Validation
-- ✅ Relacionamentos bidirecionais
-- ✅ Composite keys onde necessário
-- ✅ Métodos de negócio
-
-**Entidades:**
-1. **Paciente** - Gestão de pacientes
-2. **Medico** - Médicos solicitantes e patologistas
-3. **Amostra** - Amostras patológicas
-4. **Medicao** - Medições de amostras
-5. **ImagemAmostra** - Imagens das amostras
-6. **Laudo** - Laudos médicos
-7. **AuditLog** - Log de auditoria
-
-### 4. Enums Implementados
-
-- `Sexo` - MASCULINO, FEMININO, OUTRO
-- `TipoMedico` - SOLICITANTE, PATOLOGISTA
-- `StatusProcessamento` - RECEBIDA, EM_PROCESSAMENTO, MEDIDA, ANALISADA, LAUDADA, LIBERADA, CANCELADA
-- `StatusLaudo` - RASCUNHO, REVISAO, EMITIDO, LIBERADO, CANCELADO
-- `TipoArquivo` - JPG, JPEG, PNG, TIFF, BMP, GIF
-
-### 5. Repositórios JPA
-
-Todos os repositórios foram criados com:
-- Métodos de busca customizados
-- Queries JPQL para operações complexas
-- Queries de contagem e estatísticas
-
-### 6. Tratamento de Exceções
-
-- `GlobalExceptionHandler` - Manipulador global de exceções
-- `ResourceNotFoundException` - Recurso não encontrado (HTTP 404)
-- `BusinessException` - Violação de regras de negócio (HTTP 422)
-- `ErrorResponse` - Estrutura padrão de resposta de erro
-
-### 7. Implementação Completa do Domínio Paciente
-
-Como exemplo de implementação completa, o domínio **Paciente** está 100% funcional:
-
-#### Endpoints REST `/api/pacientes`:
-
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| POST | `/api/pacientes` | Cria novo paciente |
-| GET | `/api/pacientes` | Lista todos os pacientes |
-| GET | `/api/pacientes/{id}` | Busca paciente por ID |
-| GET | `/api/pacientes/cpf/{cpf}` | Busca paciente por CPF |
-| GET | `/api/pacientes/search?nome={nome}` | Busca por nome |
-| GET | `/api/pacientes/sexo/{sexo}` | Busca por sexo |
-| GET | `/api/pacientes/data-nascimento?inicio={data}&fim={data}` | Busca por data de nascimento |
-| GET | `/api/pacientes/com-amostras` | Pacientes com amostras |
-| GET | `/api/pacientes/count/sexo/{sexo}` | Conta pacientes por sexo |
-| PUT | `/api/pacientes/{id}` | Atualiza paciente |
-| DELETE | `/api/pacientes/{id}` | Remove paciente |
-
-## 📋 O que precisa ser implementado
-
-### Domínios Restantes
-
-Seguindo o padrão implementado para **Paciente**, você precisa criar:
-
-#### 1. Domínio Médico (`Medico`)
-
-**DTOs:**
-- ✅ `MedicoRequestDTO` (criado)
-- ✅ `MedicoResponseDTO` (criado)
-
-**Pendente:**
-- `MedicoMapper`
-- `MedicoService`
-- `MedicoController`
-
-**Endpoints sugeridos:**
-- `POST /api/medicos` - Criar médico
-- `GET /api/medicos` - Listar todos
-- `GET /api/medicos/{id}` - Buscar por ID
-- `GET /api/medicos/crm/{crm}/uf/{uf}` - Buscar por CRM
-- `GET /api/medicos/tipo/{tipo}` - Listar por tipo (SOLICITANTE/PATOLOGISTA)
-- `GET /api/medicos/especialidade?q={especialidade}` - Buscar por especialidade
-- `PUT /api/medicos/{id}` - Atualizar
-- `PUT /api/medicos/{id}/ativar` - Ativar médico
-- `PUT /api/medicos/{id}/desativar` - Desativar médico
-- `DELETE /api/medicos/{id}` - Remover
-
-#### 2. Domínio Amostra (`Amostra`)
-
-**DTOs:**
-- ✅ `AmostraRequestDTO` (criado)
-- ✅ `AmostraResponseDTO` (criado)
-
-**Pendente:**
-- `AmostraMapper`
-- `AmostraService`
-- `AmostraController`
-
-**Endpoints sugeridos:**
-- `POST /api/amostras` - Criar amostra
-- `GET /api/amostras` - Listar todas
-- `GET /api/amostras/codigo/{codigo}` - Buscar por código de rastreio
-- `GET /api/amostras/paciente/{id}` - Amostras do paciente
-- `GET /api/amostras/medico/{id}` - Amostras do médico
-- `GET /api/amostras/status/{status}` - Filtrar por status
-- `GET /api/amostras/prontas-para-analise` - Amostras prontas (com medições e imagens)
-- `GET /api/amostras/sem-laudo` - Amostras sem laudo
-- `PUT /api/amostras/{amostraId}/status` - Atualizar status
-- `PUT /api/amostras/{amostraId}` - Atualizar amostra
-- `DELETE /api/amostras/{amostraId}` - Remover
-
-#### 3. Domínio Medição (`Medicao`)
-
-**DTOs pendentes:**
-- `MedicaoRequestDTO`
-- `MedicaoResponseDTO`
-- `MedicaoMapper`
-- `MedicaoService`
-- `MedicaoController`
-
-**Endpoints sugeridos:**
-- `POST /api/amostras/{amostraId}/medicoes` - Adicionar medição
-- `GET /api/amostras/{amostraId}/medicoes` - Listar medições da amostra
-- `GET /api/amostras/{amostraId}/medicoes/ativa` - Medição ativa
-- `GET /api/medicoes/{id}` - Buscar medição por ID
-- `PUT /api/medicoes/{id}/ativar` - Ativar medição
-- `DELETE /api/medicoes/{id}` - Remover medição
-
-#### 4. Domínio Imagem (`ImagemAmostra`)
-
-**DTOs pendentes:**
-- `ImagemAmostraRequestDTO`
-- `ImagemAmostraResponseDTO`
-- `ImagemAmostraMapper`
-- `ImagemAmostraService`
-- `ImagemAmostraController`
-
-**Endpoints sugeridos:**
-- `POST /api/amostras/{amostraId}/imagens` - Adicionar imagem
-- `GET /api/amostras/{amostraId}/imagens` - Listar imagens da amostra
-- `GET /api/imagens/{id}` - Buscar imagem por ID
-- `PUT /api/imagens/{id}/ativar` - Ativar imagem
-- `DELETE /api/imagens/{id}` - Remover imagem
-
-#### 5. Domínio Laudo (`Laudo`)
-
-**DTOs pendentes:**
-- `LaudoRequestDTO`
-- `LaudoResponseDTO`
-- `LaudoMapper`
-- `LaudoService`
-- `LaudoController`
-
-**Endpoints sugeridos:**
-- `POST /api/amostras/{amostraId}/laudo` - Criar laudo
-- `GET /api/laudos/{id}` - Buscar laudo por ID
-- `GET /api/amostras/{amostraId}/laudo` - Buscar laudo da amostra
-- `GET /api/laudos` - Listar todos
-- `GET /api/laudos/status/{status}` - Filtrar por status
-- `GET /api/laudos/patologista/{id}` - Laudos do patologista
-- `PUT /api/laudos/{id}` - Atualizar laudo
-- `PUT /api/laudos/{id}/emitir` - Emitir laudo
-- `PUT /api/laudos/{id}/liberar` - Liberar laudo
-- `PUT /api/laudos/{id}/cancelar` - Cancelar laudo
-- `DELETE /api/laudos/{id}` - Remover laudo
-
-### 6. Relatórios e Análises (do menu original)
-
-Criar endpoints para os relatórios que existiam no menu CLI:
-
-**Controller: `RelatorioController`**
-- `GET /api/relatorios/processamento-amostras` - Relatório de processamento
-- `GET /api/relatorios/qualidade-medicoes` - Relatório de qualidade
-- `GET /api/relatorios/estatisticas-gerais` - Estatísticas do sistema
-- `GET /api/relatorios/analise-epidemiologica` - Análise epidemiológica
-- `GET /api/relatorios/priorizacao-inteligente` - Sistema de priorização
-- `GET /api/relatorios/dashboard-performance` - Dashboard de performance
-- `GET /api/relatorios/auditoria-compliance` - Auditoria e compliance
 
 ## 🚀 Como executar
 
@@ -250,6 +76,7 @@ mvn spring-boot:run -Dspring-boot.run.arguments=--spring.profiles.active=dev
 
 ### Acessar a aplicação
 - API Base URL: http://localhost:8080/api
+- Documentação da API: http://localhost:8080/swagger-ui/index.html
 - H2 Console: http://localhost:8080/h2-console (profile local)
 
 ## 📝 Exemplos de Requisições
@@ -317,11 +144,10 @@ Para cada domínio, siga este padrão (exemplificado com Paciente):
 2. **Repository** (`repository/PacienteRepository.java`)
    - Extends JpaRepository
    - Métodos de busca customizados
-   - Queries JPQL
 
 3. **DTOs** (`dto/PacienteRequestDTO.java` e `dto/PacienteResponseDTO.java`)
    - RequestDTO: validações de entrada
-   - ResponseDTO: dados de saída (sem anotações JPA)
+   - ResponseDTO: dados de saída
 
 4. **Mapper** (`mapper/PacienteMapper.java`)
    - toEntity(RequestDTO)
